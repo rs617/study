@@ -2,14 +2,18 @@
     width: auto;
     /* background-color: black; */
     height: 1000px;
-    background-image: url("../data/saigai_rolling_stock.png");
-    /* background-repeat: no-repeat; */
+    background-image: url("../data/amabie_sekkyaku.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 
 }    
 h1{
-    font-size: 50px;
-    color: mediumpurple;
-    padding-top: 20px;
+    font-size: 35px;
+    font-family: serif;
+    font-weight: bold;
+    color: black;
+    /* padding-top: 20px; */
     /* width: 80%; */
     /* background-color: blue; */
     text-align: center;
@@ -17,6 +21,7 @@ h1{
 
 #sub-tytle{
     font-size: 30px;
+    font-family: serif;
     color: darkgray;
     /* margin: 5px auto; */
     /* width: 80%; */
