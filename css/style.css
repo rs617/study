@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-header{
+.header-container{
     position: fixed;
     height: 80px;
     width: 100%;
@@ -11,18 +11,15 @@ header{
 }
 
 .header-container img{
-    height: 60px;
+    height: 80px;
     float: left;
     margin-top: 0;
 }
 
 .header-title{
     width: 100%;
-}
-
-h1{
     font-weight: bold;
     color: darkslategray;
+    position: absolute;
     text-align: center;
-    margin-top: 15px;
 }
