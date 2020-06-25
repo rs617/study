@@ -6,10 +6,16 @@
     <title>AIDrawing</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>
+        // フィールド設定
+        // キャンバス
         var can;
+        // キャンバスコンテクスト
         var ct;
+
         var ox = 0, oy = 0, x = 0, y = 0;
+        // マウス押下判定フラグ
         var mf = false;
+        // ロード時、キャンバスの各項目、イベント設定。
         function mam_draw_init() {
             //初期設定
             can = document.getElementById("can");
@@ -26,12 +32,22 @@
             ct.lineCap = "round";
             clearCan();
         }
+
+        // 画面タッチ時、マウス押下フラグON。起点を設定。
         function onDown(event) {
             mf = true;
             ox = event.touches[0].pageX - event.target.getBoundingClientRect().left;
             oy = event.touches[0].pageY - event.target.getBoundingClientRect().top;
             event.stopPropagation();
         }
+        // 左クリック字、マウス押下フラグON。起点を設定。
+        function onMouseDown(event) {
+            ox = event.clientX - event.target.getBoundingClientRect().left;
+            oy = event.clientY - event.target.getBoundingClientRect().top;
+            mf = true;
+        }
+        
+        // タッチ操作時、描画点を更新、描画処理
         function onMove(event) {
             if (mf) {
                 x = event.touches[0].pageX - event.target.getBoundingClientRect().left;
@@ -43,15 +59,7 @@
                 event.stopPropagation();
             }
         }
-        function onUp(event) {
-            mf = false;
-            event.stopPropagation();
-        }
-        function onMouseDown(event) {
-            ox = event.clientX - event.target.getBoundingClientRect().left;
-            oy = event.clientY - event.target.getBoundingClientRect().top;
-            mf = true;
-        }
+        // マウス操作時、描画点を更新、描画処理
         function onMouseMove(event) {
             if (mf) {
                 x = event.clientX - event.target.getBoundingClientRect().left;
@@ -61,39 +69,53 @@
                 oy = y;
             }
         }
+
+        // タッチを離したとき、押下フラグOFF
+        function onUp(event) {
+            mf = false;
+            event.stopPropagation();
+        }
+        // 左クリックを離したとき、押下フラグOFF
         function onMouseUp(event) {
             mf = false;
         }
+
+        // キャンバス内、マウス描画関数
         function drawLine() {
             ct.beginPath();
+            // 起点へ移動
             ct.moveTo(ox, oy);
+            // 移動先へ線を引く
             ct.lineTo(x, y);
             ct.stroke();
         }
 
         function clearCan() {
+            // 白で改めて塗潰しを行う。
             ct.fillStyle = "rgb(255,255,255)";
             ct.fillRect(0, 0, can.getBoundingClientRect().width, can.getBoundingClientRect().height);
         };
 
         function sendResizeCanvas() {
+            // 画像処理、キャンバスの画像を取り込み(28,28)のサイズに変換
             var canvas = document.getElementById("can");
             var newCanvas = document.createElement('canvas');
             newCanvas.width = 28;
             newCanvas.height = 28;
             var newCtx = newCanvas.getContext('2d');
             newCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, newCanvas.width, newCanvas.height);
-            // body部パラメーター
+            // 送信データ作成
             var data = {};
             // Canvasのデータをbase64でエンコードした文字列を取得
             var canvasData = newCanvas.toDataURL("image/png");
             // 不要な情報を取り除く
             canvasData = canvasData.replace(/^data:image\/png;base64,/, '');
             data.image = canvasData;
-
+            // Ajax通信
             $.ajax({
                 url: 'http://127.0.0.1:5000/postImage',
                 type: 'POST',
+                // 通信結果コンソール表示
                 success: function () {
                     // 成功時の処理
                     console.log('success');
@@ -105,16 +127,14 @@
                 data: data,
                 dataType: 'json'
             })
+            // 認識結果をHtmlへ反映
             .done(function(data) {
                 $('#output').text(data.output).show();
             });
         };
-
-
-
     </script>
 </head>
-
+<!-- Html部分 -->
 <body onload="mam_draw_init();">
     <div style="width: 100%; text-align: center;">
         <canvas id="can" width="560" height="560" style="border: solid 1px;"></canvas>
