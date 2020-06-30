@@ -24,3 +24,17 @@
     text-align: center;
     margin-top: 30px;
 }
+
+.left-menu{
+    position: fixed;
+    top: 80px;
+    width: 250px;
+    height: 10000px;
+    background-color: lightgray;
+    color: darkslategray;
+}
+
+.menu-title{
+    margin: 20px 0 0 20px;
+    color: darkslategray;
+}
