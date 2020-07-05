@@ -51,3 +51,13 @@
     color: darkslategray;
     text-align: center;
 }
+
+.main-container{
+    position: absolute;
+    top: 80px;
+    left: 250px;
+}
+
+.main-message{
+    padding: 20px;
+}
