@@ -7,7 +7,7 @@
     position: fixed;
     height: 80px;
     width: 100%;
-    background-color: aqua;
+    background-color: #fae3d9;
 }
 
 .header-container img{
@@ -31,7 +31,7 @@
     top: 80px;
     width: 250px;
     height: 10000px;
-    background-color: lightgray;
+    background-color: #bbded6;
     color: darkslategray;
     
 }
@@ -41,8 +41,8 @@
     width: 150px;
     height: 50px;
     border-radius: 15px;
-    background-color: darkturquoise;
-    border-color: darkturquoise;
+    background-color: #8ac6d1;
+    border-color: #8ac6d1;
     box-shadow: 1px 1px 0px 1px gray;
 }
 
