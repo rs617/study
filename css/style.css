@@ -33,6 +33,7 @@
     height: 10000px;
     background-color: #bbded6;
     color: darkslategray;
+
     
 }
 
@@ -44,12 +45,15 @@
     background-color: #8ac6d1;
     border-color: #8ac6d1;
     box-shadow: 1px 1px 0px 0px gray;
+    outline: none;
 }
 
 .menu-title{
     padding: 10px 20px;
-    color: darkslategray;
+    color: rgb(4, 114, 116);
     text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
 .main-container{
