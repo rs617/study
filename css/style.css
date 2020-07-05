@@ -32,15 +32,21 @@
     height: 10000px;
     background-color: lightgray;
     color: darkslategray;
-}
-
-.menu-title{
-    margin: 20px 0 0 20px;
-    color: darkslategray;
+    
 }
 
 .menu-btn{
+    margin: 20px 0 0 30px;
     width: 150px;
     height: 50px;
-    
+    border-radius: 15px;
+    background-color: darkturquoise;
+    border-color: darkturquoise;
+    box-shadow: 1px 1px 0px 1px gray;
+}
+
+.menu-title{
+    padding: 15px 20px 20px 20px;
+    color: darkslategray;
+    text-align: center;
 }
