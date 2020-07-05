@@ -8,6 +8,7 @@
     height: 80px;
     width: 100%;
     background-color: #fae3d9;
+    z-index: 1;
 }
 
 .header-container img{
@@ -60,6 +61,7 @@
     position: absolute;
     top: 80px;
     left: 250px;
+    z-index: 0;
 }
 
 .main-message{
