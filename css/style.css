@@ -15,6 +15,7 @@
     height: 80px;
     float: left;
     margin-top: 0;
+    position: absolute;
 }
 
 .header-title{
@@ -65,5 +66,7 @@
 }
 
 .main-message{
-    padding: 20px;
+
+    margin: auto;
+    text-align: center;
 }
