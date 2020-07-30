@@ -63,10 +63,9 @@
     top: 80px;
     left: 250px;
     z-index: 0;
+    width: calc(100% - 250px);
 }
 
 .main-message{
-
-    margin: auto;
     text-align: center;
 }
